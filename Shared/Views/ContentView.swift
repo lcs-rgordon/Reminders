@@ -8,14 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @ObservedObject var store: TaskStore
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        List(store.tasks) { task in
+            TaskCell(task: task)
+        }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(store: testStore)
     }
 }
