@@ -12,3 +12,5 @@ enum TaskPriority: String, Decodable  {
     case medium = "Medium"
     case low = "Low"
 }
+
+let noSpecifiedPriorityLevel = "None"
