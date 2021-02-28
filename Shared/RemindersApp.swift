@@ -14,8 +14,26 @@ struct RemindersApp: App {
     
     var body: some Scene {
         WindowGroup {
-            NavigationView {
-                ContentView(store: store)
+            
+            TabView {
+                
+                NavigationView {
+                    ContentView(store: store)
+                }
+                .tabItem {
+                    Image(systemName: "list.bullet")
+                    Text("List")
+                }
+                
+                NavigationView {
+                    ImportantTasksView(store: store)
+                }
+                .tabItem {
+                    Image(systemName: "exclamationmark.circle.fill")
+                    Text("Important")
+                }
+                
+                
             }
         }
     }

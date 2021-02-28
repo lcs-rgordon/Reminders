@@ -38,7 +38,7 @@ struct ContentView: View {
             List(store.filteredTasks(with: selectedPriorityLevel)) { task in
                 TaskCell(task: task)
             }
-            .navigationTitle("Reminders")
+            .navigationTitle("Tasks")
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     Button("Add") {
