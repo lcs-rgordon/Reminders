@@ -53,12 +53,40 @@ struct AddTask: View {
         #endif
         .navigationTitle(title)
         .toolbar {
+            
+            #if os(iOS)
             // Using .automatic ensures button appears on macOS
             ToolbarItem(placement: .automatic) {
                 Button("Save") {
                     saveTask()
                 }
+
             }
+            
+            ToolbarItem(placement: .cancellationAction) {
+                
+                Button("Cancel") {
+                    showing = false
+                }
+                
+            }
+            #else
+            // Using .automatic ensures button appears on macOS
+            ToolbarItem(placement: .cancellationAction) {
+                Button("Save") {
+                    saveTask()
+                }
+            }
+            
+            ToolbarItem(placement: .automatic) {
+                
+                Button("Cancel") {
+                    showing = false
+                }
+                
+            }
+            #endif
+
         }
     }
     
