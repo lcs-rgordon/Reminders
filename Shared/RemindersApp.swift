@@ -56,6 +56,10 @@ struct RemindersApp: App {
             }
             // Needed on macOS to set the size of the initial window
             .frame(minWidth: 350, idealWidth: 400, maxWidth: 500)
+            #if os(macOS)
+            // Add a bit of padding for the window on macOS
+            .padding(.top)
+            #endif
             
         }
         // When the app is quit or backgrounded, this closure will run
