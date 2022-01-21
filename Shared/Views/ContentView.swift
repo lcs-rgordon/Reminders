@@ -19,6 +19,9 @@ struct ContentView: View {
     // What to filter upon
     @State private var selectedPriorityLevel = noSpecifiedPriorityLevel
     
+    // Whether to show completed tasks or not
+    @State private var showingCompletedTasks = true
+    
     // MARK: Computed properties
     var body: some View {
         
@@ -65,6 +68,29 @@ struct ContentView: View {
             }
             .navigationTitle("Tasks")
             .toolbar {
+                
+                #if os(iOS)
+                ToolbarItem(placement: .bottomBar) {
+                    
+                    Button(showingCompletedTasks ? "Hide Completed Tasks" : "Show Completed Tasks") {
+                        print("Value of showingCompletedTasks was: \(showingCompletedTasks)")
+                        showingCompletedTasks.toggle()
+                        print("Value of showingCompletedTasks is now: \(showingCompletedTasks)")
+                    }
+                    
+                }
+                #else
+                ToolbarItem(placement: .automatic) {
+                    
+                    Button(showingCompletedTasks ? "Hide Completed Tasks" : "Show Completed Tasks") {
+                        print("Value of showingCompletedTasks was: \(showingCompletedTasks)")
+                        showingCompletedTasks.toggle()
+                        print("Value of showingCompletedTasks is now: \(showingCompletedTasks)")
+                    }
+                    
+                }
+                #endif
+
                 ToolbarItem(placement: .primaryAction) {
                     Button("Add") {
                         showingAddTask = true
