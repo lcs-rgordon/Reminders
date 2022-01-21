@@ -41,6 +41,23 @@ struct ContentView: View {
                 
                 ForEach(store.filteredTasks(with: selectedPriorityLevel)) { task in
                     TaskCell(task: task)
+                        .contextMenu {
+
+                            // Purge this set of dice
+                            Button(action: {
+                                withAnimation {
+                                    store.delete(task)
+                                }
+                            }) {
+                                #if os(macOS)
+                                Text("\(Image(systemName: "trash.fill"))\tDelete")
+                                    .foregroundColor(.red)
+                                #else
+                                Label("Delete", systemImage: "trash.fill")
+                                #endif
+                            }
+
+                        }
                 }
                 // View modifier invokes the function
                 .onDelete(perform: deleteItems)

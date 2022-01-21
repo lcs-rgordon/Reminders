@@ -112,7 +112,13 @@ class TaskStore: ObservableObject {
         // which handles removal from the array
         tasks.remove(atOffsets: offsets)
     }
-
+    
+    // Delete provided task from the "tasks" list
+    func delete(_ taskToDelete: Task) {
+        tasks.removeAll(where: { currentTask in
+            currentTask.id == taskToDelete.id
+        })
+    }
     
 }
 
