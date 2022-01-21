@@ -10,6 +10,10 @@ import SwiftUI
 @main
 struct RemindersApp: App {
     
+    // Detect when app moves between the foreground, background, and inactive states
+    @Environment(\.scenePhase) var scenePhase
+    
+    // Create the source of truth for tasks in this app
     @StateObject private var store = TaskStore(tasks: testData)
     
     var body: some Scene {
@@ -36,5 +40,31 @@ struct RemindersApp: App {
                 
             }
         }
+        // When the app is quit or backgrounded, this closure will run
+        .onChange(of: scenePhase) { newPhase in
+            if newPhase == .inactive {
+                
+                print("Inactive")
+                
+            } else if newPhase == .active {
+                
+                print("Active")
+                
+            } else if newPhase == .background {
+                
+                print("Background")
+                
+                // Save the list of tasks
+                let encoder = JSONEncoder()
+                if let encoded = try? encoder.encode(store.tasks) {
+                    print("Saving tasks list now, app has been backgrounded or quit...")
+                    // Actually save the tasks to UserDefaults
+                    UserDefaults.standard.setValue(encoded, forKey: "tasks")
+                }
+                
+                
+            }
+        }
     }
+    
 }

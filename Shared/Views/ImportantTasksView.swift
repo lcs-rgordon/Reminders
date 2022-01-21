@@ -18,18 +18,6 @@ struct ImportantTasksView: View {
             TaskCell(task: task)
         }
         .navigationTitle("Important")
-        // When the app is quit or backgrounded, this closure will run
-        .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { _ in
-            
-            // Save the list of tasks
-            let encoder = JSONEncoder()
-            if let encoded = try? encoder.encode(store.tasks) {
-                print("Saving tasks list now, app has been backgrounded or quit...")
-                // Actually save the tasks to UserDefaults
-                UserDefaults.standard.setValue(encoded, forKey: "tasks")
-            }
-            
-        }
         
     }
 }
