@@ -19,27 +19,44 @@ struct AddTask: View {
     // Whether to show this view
     @Binding var showing: Bool
     
+    // The title of this sheet
+    let title = "New Reminder"
+    
     var body: some View {
-        NavigationView {
-            VStack {
-                Form {
-                    TextField("Description", text: $description)
-                    
-                    Picker("Priority", selection: $priority) {
-                        Text(TaskPriority.low.rawValue).tag(TaskPriority.low)
-                        Text(TaskPriority.medium.rawValue).tag(TaskPriority.medium)
-                        Text(TaskPriority.high.rawValue).tag(TaskPriority.high)
-                    }
-                    .pickerStyle(SegmentedPickerStyle())
-
+        // Left align content (helps layout on macOS)
+        VStack(alignment: .leading) {
+            
+            #if os(macOS)
+            Text(title)
+                .font(.title2)
+                .bold()
+            #endif
+            
+            Form {
+                TextField("Description", text: $description)
+                
+                Picker("Priority", selection: $priority) {
+                    Text(TaskPriority.low.rawValue).tag(TaskPriority.low)
+                    Text(TaskPriority.medium.rawValue).tag(TaskPriority.medium)
+                    Text(TaskPriority.high.rawValue).tag(TaskPriority.high)
                 }
+                .pickerStyle(SegmentedPickerStyle())
+                
             }
-            .navigationTitle("New Reminder")
-            .toolbar {
-                ToolbarItem(placement: .primaryAction) {
-                    Button("Save") {
-                        saveTask()
-                    }
+            
+            // Push content up (helps on macOS)
+            Spacer()
+        }
+        // Padding requried on macOS to make things look better
+        #if os(macOS)
+        .padding()
+        #endif
+        .navigationTitle(title)
+        .toolbar {
+            // Using .automatic ensures button appears on macOS
+            ToolbarItem(placement: .automatic) {
+                Button("Save") {
+                    saveTask()
                 }
             }
         }
@@ -54,7 +71,7 @@ struct AddTask: View {
         
         // Dismiss this view
         showing = false
-
+        
     }
     
 }

@@ -54,6 +54,7 @@ struct RemindersApp: App {
                 #endif
                 
             }
+            // Needed on macOS to set the size of the initial window
             .frame(minWidth: 350, idealWidth: 400, maxWidth: 500)
             
         }
