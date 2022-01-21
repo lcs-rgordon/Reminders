@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
-    
+
+    // MARK: Stored properties
     // Stores all tasks that are being tracked
     @ObservedObject var store: TaskStore
     
@@ -18,6 +19,7 @@ struct ContentView: View {
     // What to filter upon
     @State private var selectedPriorityLevel = noSpecifiedPriorityLevel
     
+    // MARK: Computed properties
     var body: some View {
         
         VStack {
@@ -35,8 +37,14 @@ struct ContentView: View {
             .pickerStyle(SegmentedPickerStyle())
             .padding(.horizontal)
 
-            List(store.filteredTasks(with: selectedPriorityLevel)) { task in
-                TaskCell(task: task)
+            List {
+                
+                ForEach(store.filteredTasks(with: selectedPriorityLevel)) { task in
+                    TaskCell(task: task)
+                }
+                // View modifier invokes the function
+                .onDelete(perform: deleteItems)
+
             }
             .navigationTitle("Tasks")
             .toolbar {
@@ -59,6 +67,14 @@ struct ContentView: View {
             
         }
 
+    }
+    
+    // MARK: Functions
+    func deleteItems(at offsets: IndexSet) {
+        // "offsets" contains a set of items selected for deletion
+        // The set is then passed to the built-in "remove" method on the "tasks" array
+        // which handles removal from the array
+        store.tasks.remove(atOffsets: offsets)
     }
 }
 

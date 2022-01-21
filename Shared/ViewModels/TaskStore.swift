@@ -12,7 +12,7 @@ class TaskStore: ObservableObject {
     // MARK: Stored properties
     @Published var tasks: [Task] {
         
-        // This property observer will fire when a task is added
+        // This property observer will fire when a task is added or deleted
         // The existence of this property observer ensures tasks are saved when the app is quit
         didSet {
             
@@ -104,6 +104,15 @@ class TaskStore: ObservableObject {
         }
         
     }
+
+    // Delete items from the "tasks" list
+    func deleteItems(at offsets: IndexSet) {
+        // "offsets" contains a set of items selected for deletion
+        // The set is then passed to the built-in "remove" method on the "tasks" array
+        // which handles removal from the array
+        tasks.remove(atOffsets: offsets)
+    }
+
     
 }
 
