@@ -42,7 +42,7 @@ struct ContentView: View {
 
             List {
                 
-                ForEach(store.filteredTasks(with: selectedPriorityLevel)) { task in
+                ForEach(store.filteredTasks(with: selectedPriorityLevel, includingCompletedTasks: showingCompletedTasks)) { task in
                     TaskCell(task: task)
                         .contextMenu {
 
@@ -74,7 +74,9 @@ struct ContentView: View {
                     
                     Button(showingCompletedTasks ? "Hide Completed Tasks" : "Show Completed Tasks") {
                         print("Value of showingCompletedTasks was: \(showingCompletedTasks)")
-                        showingCompletedTasks.toggle()
+                        withAnimation {
+                            showingCompletedTasks.toggle()
+                        }
                         print("Value of showingCompletedTasks is now: \(showingCompletedTasks)")
                     }
                     
@@ -84,7 +86,9 @@ struct ContentView: View {
                     
                     Button(showingCompletedTasks ? "Hide Completed Tasks" : "Show Completed Tasks") {
                         print("Value of showingCompletedTasks was: \(showingCompletedTasks)")
-                        showingCompletedTasks.toggle()
+                        withAnimation {
+                            showingCompletedTasks.toggle()
+                        }
                         print("Value of showingCompletedTasks is now: \(showingCompletedTasks)")
                     }
                     

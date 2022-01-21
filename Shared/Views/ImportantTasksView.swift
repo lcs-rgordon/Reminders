@@ -14,7 +14,7 @@ struct ImportantTasksView: View {
     
     var body: some View {
         
-        List(store.filteredTasks(with: TaskPriority.high.rawValue)) { task in
+        List(store.filteredTasks(with: TaskPriority.high.rawValue, includingCompletedTasks: true)) { task in
             TaskCell(task: task)
         }
         .navigationTitle("Important")

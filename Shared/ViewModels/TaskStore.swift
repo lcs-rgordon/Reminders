@@ -61,12 +61,28 @@ class TaskStore: ObservableObject {
     // MARK: Functions
     
     // Return a list of tasks that has the selected priority level
-    func filteredTasks(with priorityLevel: String) -> [Task] {
+    func filteredTasks(with priorityLevel: String, includingCompletedTasks: Bool) -> [Task] {
         
         if priorityLevel == noSpecifiedPriorityLevel {
             
             // Return all the tasks
-            return tasks
+            if includingCompletedTasks {
+                return tasks
+            } else {
+                // Create an empty list
+                var onlyIncompleteTasks: [Task] = []
+                
+                // Iterate over the list
+                for task in tasks {
+                    // Only add incomplete tasks to the list
+                    if task.completed == false {
+                        onlyIncompleteTasks.append(task)
+                    }
+                }
+                
+                // Return the list of incomplete tasks
+                return onlyIncompleteTasks
+            }
             
         } else {
             
@@ -93,7 +109,14 @@ class TaskStore: ObservableObject {
                 if task.priority == givenPriority {
                     
                     // ... only add tasks that match that priority level to the list that is returned
-                    matchingTasks.append(task)
+                    if includingCompletedTasks {
+                        matchingTasks.append(task)
+                    } else {
+                        // When only including completed tasks, filter out tasks that are complete
+                        if task.completed == false {
+                            matchingTasks.append(task)
+                        }
+                    }
                 }
                 
             }
