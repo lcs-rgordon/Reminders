@@ -20,7 +20,8 @@ struct RemindersApp: App {
         WindowGroup {
             
             TabView {
-                
+
+                #if os(iOS)
                 NavigationView {
                     ContentView(store: store)
                 }
@@ -28,7 +29,15 @@ struct RemindersApp: App {
                     Image(systemName: "list.bullet")
                     Text("List")
                 }
+                #else
+                ContentView(store: store)
+                    .tabItem {
+                        Image(systemName: "list.bullet")
+                        Text("List")
+                    }
+                #endif
                 
+                #if os(iOS)
                 NavigationView {
                     ImportantTasksView(store: store)
                 }
@@ -36,9 +45,17 @@ struct RemindersApp: App {
                     Image(systemName: "exclamationmark.circle.fill")
                     Text("Important")
                 }
-                
+                #else
+                ImportantTasksView(store: store)
+                    .tabItem {
+                        Image(systemName: "exclamationmark.circle.fill")
+                        Text("Important")
+                    }
+                #endif
                 
             }
+            .frame(minWidth: 350, idealWidth: 400, maxWidth: 500)
+            
         }
         // When the app is quit or backgrounded, this closure will run
         .onChange(of: scenePhase) { newPhase in
