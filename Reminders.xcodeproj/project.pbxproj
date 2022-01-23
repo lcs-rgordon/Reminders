@@ -18,6 +18,7 @@
 		81473B3125BDC01000509D82 /* TaskStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81473B3025BDC01000509D82 /* TaskStore.swift */; };
 		81A3DC0725BDC49600819137 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A3DC0625BDC49600819137 /* TaskCell.swift */; };
 		81A3DC0825BDC49600819137 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A3DC0625BDC49600819137 /* TaskCell.swift */; };
+		81E58D8F279DE9A4007A25ED /* VisibleTaskPriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E58D8E279DE9A4007A25ED /* VisibleTaskPriority.swift */; };
 		81E9B1AE25BDCF3000FB8F3A /* AddTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E9B1AD25BDCF3000FB8F3A /* AddTask.swift */; };
 		81E9B1AF25BDCF3000FB8F3A /* AddTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E9B1AD25BDCF3000FB8F3A /* AddTask.swift */; };
 /* End PBXBuildFile section */
@@ -35,6 +36,7 @@
 		81473B2C25BDC00800509D82 /* TaskPriority.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPriority.swift; sourceTree = "<group>"; };
 		81473B3025BDC01000509D82 /* TaskStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStore.swift; sourceTree = "<group>"; };
 		81A3DC0625BDC49600819137 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
+		81E58D8E279DE9A4007A25ED /* VisibleTaskPriority.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisibleTaskPriority.swift; sourceTree = "<group>"; };
 		81E9B1AD25BDCF3000FB8F3A /* AddTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTask.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,6 +111,7 @@
 			children = (
 				81473B2625BDBFFD00509D82 /* Task.swift */,
 				81473B2C25BDC00800509D82 /* TaskPriority.swift */,
+				81E58D8E279DE9A4007A25ED /* VisibleTaskPriority.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -235,6 +238,7 @@
 				81A3DC0725BDC49600819137 /* TaskCell.swift in Sources */,
 				81E9B1AE25BDCF3000FB8F3A /* AddTask.swift in Sources */,
 				81473B1425BDBEDF00509D82 /* RemindersApp.swift in Sources */,
+				81E58D8F279DE9A4007A25ED /* VisibleTaskPriority.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
