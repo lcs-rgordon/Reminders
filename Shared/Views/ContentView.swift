@@ -21,7 +21,8 @@ struct ContentView: View {
     var body: some View {
         List {
             ForEach(store.filteredTasks(includingCompletedTasks: showingCompletedTasks)) { task in
-                TaskCell(task: task)
+                TaskCell(task: task,
+                         completedTaskVisibility: $showingCompletedTasks)
             }
             // View modifier invokes the function
             .onDelete(perform: deleteItems)
