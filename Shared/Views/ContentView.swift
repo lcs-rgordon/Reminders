@@ -20,7 +20,7 @@ struct ContentView: View {
     
     var body: some View {
         List {
-            ForEach(store.tasks) { task in
+            ForEach(store.filteredTasks(includingCompletedTasks: showingCompletedTasks)) { task in
                 TaskCell(task: task)
             }
             // View modifier invokes the function
@@ -43,7 +43,9 @@ struct ContentView: View {
                 
                 Button(showingCompletedTasks ? "Hide Completed Tasks" : "Show Completed Tasks") {
                     print("Value of showingCompletedTasks was: \(showingCompletedTasks)")
-                    showingCompletedTasks.toggle()
+                    withAnimation {
+                        showingCompletedTasks.toggle()
+                    }
                     print("Value of showingCompletedTasks is now: \(showingCompletedTasks)")
                 }
                 
