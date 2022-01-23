@@ -19,6 +19,7 @@
 		81A3DC0725BDC49600819137 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A3DC0625BDC49600819137 /* TaskCell.swift */; };
 		81A3DC0825BDC49600819137 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A3DC0625BDC49600819137 /* TaskCell.swift */; };
 		81E58D8F279DE9A4007A25ED /* VisibleTaskPriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E58D8E279DE9A4007A25ED /* VisibleTaskPriority.swift */; };
+		81E58D92279DEE56007A25ED /* SharedFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E58D91279DEE56007A25ED /* SharedFunctions.swift */; };
 		81E9B1AE25BDCF3000FB8F3A /* AddTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E9B1AD25BDCF3000FB8F3A /* AddTask.swift */; };
 		81E9B1AF25BDCF3000FB8F3A /* AddTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E9B1AD25BDCF3000FB8F3A /* AddTask.swift */; };
 /* End PBXBuildFile section */
@@ -37,6 +38,7 @@
 		81473B3025BDC01000509D82 /* TaskStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStore.swift; sourceTree = "<group>"; };
 		81A3DC0625BDC49600819137 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		81E58D8E279DE9A4007A25ED /* VisibleTaskPriority.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisibleTaskPriority.swift; sourceTree = "<group>"; };
+		81E58D91279DEE56007A25ED /* SharedFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedFunctions.swift; sourceTree = "<group>"; };
 		81E9B1AD25BDCF3000FB8F3A /* AddTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTask.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -72,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				81473B0125BDBEDE00509D82 /* RemindersApp.swift */,
+				81E58D90279DEE3A007A25ED /* Helpers */,
 				81473B2425BDBEF700509D82 /* Model */,
 				81E58D8A279D893A007A25ED /* ViewModels */,
 				81473B2525BDBF3000509D82 /* Views */,
@@ -132,6 +135,14 @@
 				81473B3025BDC01000509D82 /* TaskStore.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		81E58D90279DEE3A007A25ED /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				81E58D91279DEE56007A25ED /* SharedFunctions.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,6 +250,7 @@
 				81E9B1AE25BDCF3000FB8F3A /* AddTask.swift in Sources */,
 				81473B1425BDBEDF00509D82 /* RemindersApp.swift in Sources */,
 				81E58D8F279DE9A4007A25ED /* VisibleTaskPriority.swift in Sources */,
+				81E58D92279DEE56007A25ED /* SharedFunctions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
