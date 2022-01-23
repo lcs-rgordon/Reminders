@@ -22,6 +22,7 @@ struct ContentView: View {
             }
             // View modifier invokes the function
             .onDelete(perform: deleteItems)
+            .onMove(perform: moveItems)
         }
         .navigationTitle("Reminders")
         .toolbar {
@@ -29,6 +30,10 @@ struct ContentView: View {
                 Button("Add") {
                     showingAddTask = true
                 }
+            }
+            
+            ToolbarItem(placement: .navigationBarLeading) {
+                EditButton()
             }
         }
         .sheet(isPresented: $showingAddTask) {
@@ -41,6 +46,12 @@ struct ContentView: View {
         // The set is then passed to the built-in "remove" method on
         // the "tasks" array which handles removal from the array
         store.tasks.remove(atOffsets: offsets)
+    }
+    
+    // Invoked to move items around in our list, to set priority
+    // See: https://www.hackingwithswift.com/quick-start/swiftui/how-to-let-users-move-rows-in-a-list
+    func moveItems(from source: IndexSet, to destination: Int) {
+        store.tasks.move(fromOffsets: source, toOffset: destination)
     }
     
 }
