@@ -15,18 +15,14 @@ struct ContentView: View {
     // Controls whether the add task is showing
     @State private var showingAddTask = false
     
-    // Whether to show completed tasks or not
-    @State private var showingCompletedTasks = true
-    
     var body: some View {
         List {
-            ForEach(store.filteredTasks(includingCompletedTasks: showingCompletedTasks)) { task in
-                TaskCell(task: task,
-                         completedTaskVisibility: $showingCompletedTasks)
+            ForEach(store.visibleTasks) { task in
+                TaskCell(task: task)
             }
             // View modifier invokes the function
-            .onDelete(perform: deleteItems)
-            .onMove(perform: moveItems)
+            .onDelete(perform: store.deleteItems)
+            .onMove(perform: store.moveItems)
         }
         .navigationTitle("Reminders")
         .toolbar {
@@ -42,12 +38,12 @@ struct ContentView: View {
             
             ToolbarItem(placement: .bottomBar) {
                 
-                Button(showingCompletedTasks ? "Hide Completed Tasks" : "Show Completed Tasks") {
-                    print("Value of showingCompletedTasks was: \(showingCompletedTasks)")
+                Button(store.showingCompletedTasks ? "Hide Completed Tasks" : "Show Completed Tasks") {
+                    print("Value of showingCompletedTasks was: \(store.showingCompletedTasks)")
                     withAnimation {
-                        showingCompletedTasks.toggle()
+                        store.showingCompletedTasks.toggle()
                     }
-                    print("Value of showingCompletedTasks is now: \(showingCompletedTasks)")
+                    print("Value of showingCompletedTasks is now: \(store.showingCompletedTasks)")
                 }
                 
             }
@@ -55,21 +51,9 @@ struct ContentView: View {
         .sheet(isPresented: $showingAddTask) {
             AddTask(store: store, showing: $showingAddTask)
         }
+        
     }
-    
-    func deleteItems(at offsets: IndexSet) {
-        // "offsets" contains a set of items selected for deletion
-        // The set is then passed to the built-in "remove" method on
-        // the "tasks" array which handles removal from the array
-        store.tasks.remove(atOffsets: offsets)
-    }
-    
-    // Invoked to move items around in our list, to set priority
-    // See: https://www.hackingwithswift.com/quick-start/swiftui/how-to-let-users-move-rows-in-a-list
-    func moveItems(from source: IndexSet, to destination: Int) {
-        store.tasks.move(fromOffsets: source, toOffset: destination)
-    }
-    
+        
 }
 
 struct ContentView_Previews: PreviewProvider {
