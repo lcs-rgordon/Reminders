@@ -47,5 +47,22 @@ struct RemindersApp: App {
                 
             }
         }
+        #if os(macOS)
+        // Builds menus
+        .commands {
+            CommandGroup(replacing: .appTermination) {
+                // Add Quit Reminders command
+                Button(action: {
+                    // Save tasks
+                    store.save()
+                    // Close application
+                    exit(0)
+                }, label: {
+                    Text("Quit Reminders")
+                })
+                    .keyboardShortcut("Q", modifiers: [.command])
+            }
+        }
+        #endif
     }
 }
