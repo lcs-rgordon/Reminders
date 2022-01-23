@@ -84,16 +84,13 @@ struct ContentView: View {
         }
         .navigationTitle("Reminders")
         .toolbar {
-            ToolbarItem(placement: .primaryAction) {
-                Button("Add") {
-                    showingAddTask = true
-                }
-            }
-            
+            #if os(iOS)
             ToolbarItem(placement: .navigationBarLeading) {
                 EditButton()
             }
+            #endif
             
+            #if os(iOS)
             ToolbarItem(placement: .bottomBar) {
                 
                 Button(showingCompletedTasks ? "Hide Completed Tasks" : "Show Completed Tasks") {
@@ -103,6 +100,25 @@ struct ContentView: View {
                 }
                 
             }
+            #else
+            ToolbarItem(placement: .automatic) {
+                
+                Button(showingCompletedTasks ? "Hide Completed Tasks" : "Show Completed Tasks") {
+                    print("Value of showingCompletedTasks was: \(showingCompletedTasks)")
+                    showingCompletedTasks.toggle()
+                    print("Value of showingCompletedTasks is now: \(showingCompletedTasks)")
+                }
+                
+            }
+            #endif
+            
+            ToolbarItem(placement: .primaryAction) {
+                Button("Add") {
+                    showingAddTask = true
+                }
+            }
+            
+
         }
         .sheet(isPresented: $showingAddTask) {
             AddTask(store: store, showing: $showingAddTask)
