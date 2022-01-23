@@ -38,6 +38,9 @@ struct ContentView: View {
             Text("Filter by...")
                 .font(Font.caption.smallCaps())
                 .foregroundColor(.secondary)
+            #if os(macOS)
+                .padding(.top)
+            #endif
             
             Picker("Priority", selection: $selectedPriorityForVisibleTasks) {
                 Text(VisibleTaskPriority.all.rawValue).tag(VisibleTaskPriority.all)
@@ -121,7 +124,14 @@ struct ContentView: View {
 
         }
         .sheet(isPresented: $showingAddTask) {
+            // We only need the sheet inside a NavigationView on iOS
+            #if os(iOS)
+            NavigationView {
+                AddTask(store: store, showing: $showingAddTask)
+            }
+            #else
             AddTask(store: store, showing: $showingAddTask)
+            #endif
         }
         
     }
