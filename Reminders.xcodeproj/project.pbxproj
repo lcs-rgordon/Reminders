@@ -71,6 +71,7 @@
 			children = (
 				81473B0125BDBEDE00509D82 /* RemindersApp.swift */,
 				81473B2425BDBEF700509D82 /* Model */,
+				81E58D8A279D893A007A25ED /* ViewModels */,
 				81473B2525BDBF3000509D82 /* Views */,
 				81473B0325BDBEDF00509D82 /* Assets.xcassets */,
 			);
@@ -108,7 +109,6 @@
 			children = (
 				81473B2625BDBFFD00509D82 /* Task.swift */,
 				81473B2C25BDC00800509D82 /* TaskPriority.swift */,
-				81473B3025BDC01000509D82 /* TaskStore.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -121,6 +121,14 @@
 				81E9B1AD25BDCF3000FB8F3A /* AddTask.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		81E58D8A279D893A007A25ED /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				81473B3025BDC01000509D82 /* TaskStore.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
