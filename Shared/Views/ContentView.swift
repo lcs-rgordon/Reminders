@@ -15,10 +15,21 @@ struct ContentView: View {
     // Controls whether the add task is showing
     @State private var showingAddTask = false
     
+    // Whether to show completed tasks or not
+    @State var showingCompletedTasks = true
+    
     var body: some View {
         List {
-            ForEach(store.visibleTasks) { task in
-                TaskCell(task: task)
+            ForEach(store.tasks) { task in
+                if showingCompletedTasks {
+                    // Show all tasks
+                    TaskCell(task: task)
+                } else {
+                    // Only show incomplete tasks
+                    if task.completed == false {
+                        TaskCell(task: task)
+                    }
+                }
             }
             // View modifier invokes the function
             .onDelete(perform: store.deleteItems)
@@ -38,12 +49,10 @@ struct ContentView: View {
             
             ToolbarItem(placement: .bottomBar) {
                 
-                Button(store.showingCompletedTasks ? "Hide Completed Tasks" : "Show Completed Tasks") {
-                    print("Value of showingCompletedTasks was: \(store.showingCompletedTasks)")
-                    withAnimation {
-                        store.showingCompletedTasks.toggle()
-                    }
-                    print("Value of showingCompletedTasks is now: \(store.showingCompletedTasks)")
+                Button(showingCompletedTasks ? "Hide Completed Tasks" : "Show Completed Tasks") {
+                    print("Value of showingCompletedTasks was: \(showingCompletedTasks)")
+                    showingCompletedTasks.toggle()
+                    print("Value of showingCompletedTasks is now: \(showingCompletedTasks)")
                 }
                 
             }
