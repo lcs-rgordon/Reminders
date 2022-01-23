@@ -16,8 +16,12 @@ struct ContentView: View {
     @State private var showingAddTask = false
     
     var body: some View {
-        List(store.tasks) { task in
-            TaskCell(task: task)
+        List {
+            ForEach(store.tasks) { task in
+                TaskCell(task: task)
+            }
+            // View modifier invokes the function
+            .onDelete(perform: deleteItems)
         }
         .navigationTitle("Reminders")
         .toolbar {
@@ -31,6 +35,14 @@ struct ContentView: View {
             AddTask(store: store, showing: $showingAddTask)
         }
     }
+    
+    func deleteItems(at offsets: IndexSet) {
+        // "offsets" contains a set of items selected for deletion
+        // The set is then passed to the built-in "remove" method on
+        // the "tasks" array which handles removal from the array
+        store.tasks.remove(atOffsets: offsets)
+    }
+    
 }
 
 struct ContentView_Previews: PreviewProvider {
