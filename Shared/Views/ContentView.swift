@@ -58,10 +58,13 @@ struct ContentView: View {
                         if selectedPriorityForVisibleTasks == .all {
                             TaskCell(task: task,
                                      triggerListUpdate: .constant(true))
+//                                .modifier(DeleteMenuItem(store: store, task: task)) // Ugly way
+                                .deleteMenuItem(store: store, task: task)           // Nice way with extension to View
                         } else {
                             if task.priority.rawValue == selectedPriorityForVisibleTasks.rawValue {
                                 TaskCell(task: task,
                                          triggerListUpdate: .constant(true))
+                                    .deleteMenuItem(store: store, task: task)
                             }
                         }
                     } else {
@@ -71,10 +74,13 @@ struct ContentView: View {
                             if selectedPriorityForVisibleTasks == .all {
                                 TaskCell(task: task,
                                          triggerListUpdate: $listShouldUpdate)
+                                    .deleteMenuItem(store: store, task: task)
+
                             } else {
                                 if task.priority.rawValue == selectedPriorityForVisibleTasks.rawValue {
                                     TaskCell(task: task,
                                              triggerListUpdate: $listShouldUpdate)
+                                        .deleteMenuItem(store: store, task: task)
                                 }
                             }
                         }
@@ -136,6 +142,40 @@ struct ContentView: View {
         
     }
         
+}
+
+struct DeleteMenuItem: ViewModifier {
+    
+    let store: TaskStore
+    let task: Task
+    
+    func body(content: Content) -> some View {
+        content
+            .contextMenu {
+
+                 // Purge this set of dice
+                 Button(action: {
+                     withAnimation {
+                         store.delete(task)
+                     }
+                 }) {
+                     #if os(macOS)
+                     Text("\(Image(systemName: "trash.fill"))\tDelete")
+                         .foregroundColor(.red)
+                     #else
+                     Label("Delete", systemImage: "trash.fill")
+                     #endif
+                 }
+
+             }
+
+    }
+}
+
+extension View {
+    func deleteMenuItem(store: TaskStore, task: Task) -> some View {
+        modifier(DeleteMenuItem(store: store, task: task))
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {
