@@ -42,6 +42,9 @@ struct ContentView: View {
             Text("Filter by...")
                 .font(Font.caption.smallCaps())
                 .foregroundColor(.secondary)
+            #if os(macOS)
+                .padding(.top)
+            #endif
             
             // Picker to allow user to select what tasks to show
             Picker("Priority", selection: $selectedPriorityForVisibleTasks) {
@@ -108,12 +111,6 @@ struct ContentView: View {
             .navigationTitle("Reminders")
             .toolbar {
                 
-                ToolbarItem(placement: .primaryAction) {
-                    Button("Add") {
-                        showingAddTask = true
-                    }
-                }
-                
                 #if os(iOS)
                 ToolbarItem(placement: .navigationBarLeading) {
                     EditButton()
@@ -143,6 +140,14 @@ struct ContentView: View {
                     }
                 }
                 #endif
+                
+                ToolbarItem(placement: .primaryAction) {
+                    Button("Add") {
+                        showingAddTask = true
+                    }
+                }
+                
+
                 
             }
             .sheet(isPresented: $showingAddTask) {
