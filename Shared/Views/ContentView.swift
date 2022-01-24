@@ -151,7 +151,14 @@ struct ContentView: View {
                 
             }
             .sheet(isPresented: $showingAddTask) {
+                // We only need the sheet inside a NavigationView on iOS
+                #if os(iOS)
+                NavigationView {
+                    AddTask(store: store, showing: $showingAddTask)
+                }
+                #else
                 AddTask(store: store, showing: $showingAddTask)
+                #endif
             }
             
         }
