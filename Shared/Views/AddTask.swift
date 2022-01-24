@@ -54,6 +54,11 @@ struct AddTask: View {
                 
             }
         }
+        // Prevents dismissal of the sheet by swiping down
+        // If sheet is dismissed this way, data is not saved.
+        // Better that user needs to press "Save" button or "Cancel"
+        // button, so we know their intent when dismissing the sheet
+        .interactiveDismissDisabled()
     }
     
     func saveTask() {
