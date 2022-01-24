@@ -41,14 +41,14 @@ struct RemindersApp: App {
                 
                 #if os(iOS)
                 NavigationView {
-                    ImportantTasksView(store: store)
+                    ImportantTasks(store: store)
                 }
                 .tabItem {
                     Image(systemName: "exclamationmark.circle.fill")
                     Text("Important")
                 }
                 #else
-                ImportantTasksView(store: store)
+                ImportantTasks(store: store)
                     .tabItem {
                         Image(systemName: "exclamationmark.circle.fill")
                         Text("Important")

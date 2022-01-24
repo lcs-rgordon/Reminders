@@ -1,5 +1,5 @@
 //
-//  ImportantTasksView.swift
+//  ImportantTasks.swift
 //  Reminders
 //
 //  Created by Russell Gordon on 2022-01-24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ImportantTasksView: View {
+struct ImportantTasks: View {
     
     // Connection to the view model to retrieve data
     @ObservedObject var store: TaskStore
@@ -25,10 +25,10 @@ struct ImportantTasksView: View {
     }
 }
 
-struct ImportantTasksView_Previews: PreviewProvider {
+struct ImportantTasks_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ImportantTasksView(store: testStore)
+            ImportantTasks(store: testStore)
         }
     }
 }
