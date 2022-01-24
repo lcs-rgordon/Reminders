@@ -65,6 +65,7 @@ struct ContentView: View {
                             
                             // Show all tasks, completed or incomplete
                             TaskCell(task: task, triggerListUpdate: .constant(true))
+                                .deleteMenuItem(store: store, task: task)
 
                         } else {
                             
@@ -75,6 +76,7 @@ struct ContentView: View {
                             if task.priority.rawValue == selectedPriorityForVisibleTasks.rawValue {
                                 
                                 TaskCell(task: task, triggerListUpdate: .constant(true))
+                                    .deleteMenuItem(store: store, task: task)
                                 
                             }
                             
@@ -89,6 +91,7 @@ struct ContentView: View {
                                 
                                 // Show all incomplete tasks
                                 TaskCell(task: task, triggerListUpdate: $listShouldUpdate)
+                                    .deleteMenuItem(store: store, task: task)
 
                             } else {
                                 
@@ -96,6 +99,7 @@ struct ContentView: View {
                                 if task.priority.rawValue == selectedPriorityForVisibleTasks.rawValue {
                                     
                                     TaskCell(task: task, triggerListUpdate: $listShouldUpdate)
+                                        .deleteMenuItem(store: store, task: task)
                                     
                                 }
                                 

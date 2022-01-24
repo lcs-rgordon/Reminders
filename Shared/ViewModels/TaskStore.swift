@@ -52,6 +52,13 @@ class TaskStore: ObservableObject {
         tasks.remove(atOffsets: offsets)
     }
     
+    // Delete provided task from the "tasks" list
+     func delete(_ taskToDelete: Task) {
+         tasks.removeAll(where: { currentTask in
+             currentTask.id == taskToDelete.id
+         })
+     }
+    
     // Invoked to move items around in our list
      func moveItems(from source: IndexSet, to destination: Int) {
          // "source" again contains a set of item(s) being moved

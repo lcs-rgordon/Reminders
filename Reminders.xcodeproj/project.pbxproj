@@ -25,6 +25,8 @@
 		81E58DA9279EFF70007A25ED /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81473B2625BDBFFD00509D82 /* Task.swift */; };
 		81E58DAA279EFF70007A25ED /* TaskPriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81473B2C25BDC00800509D82 /* TaskPriority.swift */; };
 		81E58DAB279EFF70007A25ED /* VisibleTaskPriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E58DA2279EF761007A25ED /* VisibleTaskPriority.swift */; };
+		81E58DAF279F0A18007A25ED /* DeleteMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E58DAE279F0A18007A25ED /* DeleteMenuItem.swift */; };
+		81E58DB0279F0A31007A25ED /* DeleteMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E58DAE279F0A18007A25ED /* DeleteMenuItem.swift */; };
 		81E9B1AE25BDCF3000FB8F3A /* AddTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E9B1AD25BDCF3000FB8F3A /* AddTask.swift */; };
 		81E9B1AF25BDCF3000FB8F3A /* AddTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E9B1AD25BDCF3000FB8F3A /* AddTask.swift */; };
 /* End PBXBuildFile section */
@@ -44,6 +46,7 @@
 		81A3DC0625BDC49600819137 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		81E58DA2279EF761007A25ED /* VisibleTaskPriority.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisibleTaskPriority.swift; sourceTree = "<group>"; };
 		81E58DA5279EFAC8007A25ED /* SharedFunctionsAndConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedFunctionsAndConstants.swift; sourceTree = "<group>"; };
+		81E58DAE279F0A18007A25ED /* DeleteMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteMenuItem.swift; sourceTree = "<group>"; };
 		81E9B1AD25BDCF3000FB8F3A /* AddTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTask.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -83,6 +86,7 @@
 				81E58DA1279EE4BE007A25ED /* ViewModels */,
 				81473B2425BDBEF700509D82 /* Model */,
 				81473B2525BDBF3000509D82 /* Views */,
+				81E58DAD279F0A02007A25ED /* ViewModifiers */,
 				81473B0325BDBEDF00509D82 /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -148,6 +152,14 @@
 				81E58DA5279EFAC8007A25ED /* SharedFunctionsAndConstants.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		81E58DAD279F0A02007A25ED /* ViewModifiers */ = {
+			isa = PBXGroup;
+			children = (
+				81E58DAE279F0A18007A25ED /* DeleteMenuItem.swift */,
+			);
+			path = ViewModifiers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -247,6 +259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81E58DAF279F0A18007A25ED /* DeleteMenuItem.swift in Sources */,
 				81E58DA6279EFAC8007A25ED /* SharedFunctionsAndConstants.swift in Sources */,
 				81473B3125BDC01000509D82 /* TaskStore.swift in Sources */,
 				81473B1625BDBEDF00509D82 /* ContentView.swift in Sources */,
@@ -263,6 +276,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81E58DB0279F0A31007A25ED /* DeleteMenuItem.swift in Sources */,
 				81E58DA7279EFF70007A25ED /* SharedFunctionsAndConstants.swift in Sources */,
 				81E58DA8279EFF70007A25ED /* TaskStore.swift in Sources */,
 				81E58DA9279EFF70007A25ED /* Task.swift in Sources */,
