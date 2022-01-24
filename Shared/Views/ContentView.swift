@@ -20,16 +20,23 @@ struct ContentView: View {
             ForEach(store.tasks) { task in
                 TaskCell(task: task)
             }
-            // View modifier invokes the function on the view model, "store"
+            // View modifiers invoke these functions on the view model, "store"
             .onDelete(perform: store.deleteItems)
+            .onMove(perform: store.moveItems)
         }
         .navigationTitle("Reminders")
         .toolbar {
+
             ToolbarItem(placement: .primaryAction) {
                 Button("Add") {
                     showingAddTask = true
                 }
             }
+            
+            ToolbarItem(placement: .navigationBarLeading) {
+                EditButton()
+            }
+
         }
         .sheet(isPresented: $showingAddTask) {
             AddTask(store: store, showing: $showingAddTask)
