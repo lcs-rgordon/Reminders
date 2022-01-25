@@ -16,8 +16,12 @@ struct ContentView: View {
     @State private var showingAddTask = false
     
     var body: some View {
-        List(store.tasks) { task in
-            TaskCell(task: task)
+        List {
+            ForEach(store.tasks) { task in
+                TaskCell(task: task)
+            }
+            // View modifier invokes the function on the view model, "store"
+            .onDelete(perform: store.deleteItems)
         }
         .navigationTitle("Reminders")
         .toolbar {
