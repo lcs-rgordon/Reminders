@@ -117,10 +117,13 @@ struct ContentView: View {
                     }
                 }
                 
+                #if os(iOS)
                 ToolbarItem(placement: .navigationBarLeading) {
                     EditButton()
                 }
+                #endif
                 
+                #if os(iOS)
                 ToolbarItem(placement: .bottomBar) {
                     // Allow user to toggle visibility of tasks based on their completion status
                     //
@@ -131,6 +134,18 @@ struct ContentView: View {
                         print("Value of showingCompletedTasks is now: \(showingCompletedTasks)")
                     }
                 }
+                #else
+                ToolbarItem(placement: .automatic) {
+                    // Allow user to toggle visibility of tasks based on their completion status
+                    //
+                    //     CONDITION TO EVALUATE       WHEN TRUE               WHEN FALSE
+                    Button(showingCompletedTasks ? "Hide Completed Tasks" : "Show Completed Tasks") {
+                        print("Value of showingCompletedTasks was: \(showingCompletedTasks)")
+                        showingCompletedTasks.toggle()
+                        print("Value of showingCompletedTasks is now: \(showingCompletedTasks)")
+                    }
+                }
+                #endif
             }
             .sheet(isPresented: $showingAddTask) {
                 AddTask(store: store, showing: $showingAddTask)

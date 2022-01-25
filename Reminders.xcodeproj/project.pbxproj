@@ -20,6 +20,11 @@
 		81A3DC0825BDC49600819137 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A3DC0625BDC49600819137 /* TaskCell.swift */; };
 		81E58DB3279F8AF1007A25ED /* VisibleTaskPriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E58DB2279F8AF1007A25ED /* VisibleTaskPriority.swift */; };
 		81E58DB6279F90AD007A25ED /* SharedFunctionsAndConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E58DB5279F90AD007A25ED /* SharedFunctionsAndConstants.swift */; };
+		81E58DBC27A06E40007A25ED /* SharedFunctionsAndConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E58DB5279F90AD007A25ED /* SharedFunctionsAndConstants.swift */; };
+		81E58DBD27A06E40007A25ED /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81473B2625BDBFFD00509D82 /* Task.swift */; };
+		81E58DBE27A06E40007A25ED /* TaskPriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81473B2C25BDC00800509D82 /* TaskPriority.swift */; };
+		81E58DBF27A06E40007A25ED /* VisibleTaskPriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E58DB2279F8AF1007A25ED /* VisibleTaskPriority.swift */; };
+		81E58DC027A06E40007A25ED /* TaskStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81473B3025BDC01000509D82 /* TaskStore.swift */; };
 		81E9B1AE25BDCF3000FB8F3A /* AddTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E9B1AD25BDCF3000FB8F3A /* AddTask.swift */; };
 		81E9B1AF25BDCF3000FB8F3A /* AddTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E9B1AD25BDCF3000FB8F3A /* AddTask.swift */; };
 /* End PBXBuildFile section */
@@ -258,6 +263,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81E58DBC27A06E40007A25ED /* SharedFunctionsAndConstants.swift in Sources */,
+				81E58DBD27A06E40007A25ED /* Task.swift in Sources */,
+				81E58DBE27A06E40007A25ED /* TaskPriority.swift in Sources */,
+				81E58DBF27A06E40007A25ED /* VisibleTaskPriority.swift in Sources */,
+				81E58DC027A06E40007A25ED /* TaskStore.swift in Sources */,
 				81E9B1AF25BDCF3000FB8F3A /* AddTask.swift in Sources */,
 				81473B1725BDBEDF00509D82 /* ContentView.swift in Sources */,
 				81A3DC0825BDC49600819137 /* TaskCell.swift in Sources */,
@@ -440,7 +450,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ca.russellgordon.Reminders;
 				PRODUCT_NAME = Reminders;
 				SDKROOT = macosx;
@@ -464,7 +474,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ca.russellgordon.Reminders;
 				PRODUCT_NAME = Reminders;
 				SDKROOT = macosx;
