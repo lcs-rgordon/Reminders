@@ -18,9 +18,15 @@ struct RemindersApp: App {
     
     var body: some Scene {
         WindowGroup {
+            #if os(iOS)
             NavigationView {
                 ContentView(store: store)
             }
+            #else
+                ContentView(store: store)
+                // Set the ideal size of the window on macOS
+                .frame(minWidth: 475, idealWidth: 525, maxWidth: 575, minHeight: 200, idealHeight: 300)
+            #endif
         }
         .onChange(of: scenePhase) { newPhase in
             

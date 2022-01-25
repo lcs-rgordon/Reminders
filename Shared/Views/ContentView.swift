@@ -42,6 +42,9 @@ struct ContentView: View {
             Text("Filter by...")
                 .font(Font.caption.smallCaps())
                 .foregroundColor(.secondary)
+            #if os(macOS)
+                .padding(.top, 8)
+            #endif
             
             // Picker to allow user to select what tasks to show
             Picker("Priority", selection: $selectedPriorityForVisibleTasks) {
