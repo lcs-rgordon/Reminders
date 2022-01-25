@@ -53,6 +53,7 @@ struct AddTask: View {
         #endif
         .navigationTitle("New Reminder")
         .toolbar {
+            #if os(iOS)
             ToolbarItem(placement: .automatic) {
                 Button("Save") {
                     saveTask()
@@ -72,6 +73,28 @@ struct AddTask: View {
                     showing = false
                 }
             }
+            #else
+            ToolbarItem(placement: .cancellationAction) {
+                Button("Save") {
+                    saveTask()
+                }
+                // The button is disabled, and therefore cannot be
+                // pressed, when the description of the task is empty.
+                // This prevents the user from saving an empty task.
+                .disabled(description.isEmpty)
+            }
+            
+            ToolbarItem(placement: .automatic) {
+                Button("Cancel") {
+                    // Dismiss the sheet by adjusting the "showing"
+                    // property, a derived value, which is bound
+                    // to the "showingAddTask" property from
+                    // ContentView, the source of truth
+                    showing = false
+                }
+            }
+
+            #endif
         }
         // Prevents dismissal of the sheet by swiping down
         // If sheet is dismissed this way, data is not saved.
